@@ -55,18 +55,18 @@ Here is the Model Structure:
 Then use to test the sanity test files, we need to convert the .wav to spectrum first:
 
 y, sr = librosa.load('testN/rg_audio/rg_val_sent002.wav')
-# make and display a mel-scaled power spectrogram
+""" make and display a mel-scaled power spectrogram """
 S = librosa.feature.melspectrogram(y, sr=sr, n_mels=128)
-# Convert to log scale (dB). Use the peak power as reference.
+""" Convert to log scale (dB). Use the peak power as reference. """
 log_S = librosa.power_to_db(S)
 fig = plt.figure(figsize=(12,4))
 ax = plt.Axes(fig, [0., 0., 1., 1.])
 ax.set_axis_off()
 fig.add_axes(ax)
-# Display the spectrogram on a mel scale        
-# sample rate and hop length parameters are used to render the time axis
+""" Display the spectrogram on a mel scale """
+""" sample rate and hop length parameters are used to render the time axis"""
 librosa.display.specshow(log_S, sr=sr, x_axis='time', y_axis='mel')
-# Make the figure layout compact
+""" Make the figure layout compact """
 #plt.show()
 plt.savefig('spectrograms/test/rene_g/rg2.jpg')
 plt.close()
